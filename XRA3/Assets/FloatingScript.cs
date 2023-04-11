@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class FloatingScript : MonoBehaviour
 {
-
     public float amplitude = 1.0f;
     public float frequency = 1.0f;
     public float offsetY = 0.0f;
     public GameObject floor;
-
     private Rigidbody rb;
     private float time = 0.0f;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -31,5 +28,4 @@ public class FloatingScript : MonoBehaviour
         // Apply force to Rigidbody
         rb.AddForce(force);
     }
-
 }

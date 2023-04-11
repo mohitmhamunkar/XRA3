@@ -19,5 +19,4 @@ public class coliderCode : MonoBehaviour
             Physics.IgnoreCollision(door, other, false);
         }
     }
-
-    }
+}

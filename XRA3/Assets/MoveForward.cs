@@ -19,10 +19,6 @@ public class MoveForward : MonoBehaviour
     {
         speed += Time.deltaTime * 1f;
         Vector3 direction = transform.forward; // get the forward direction of the object
-
         rigidbody.MovePosition(transform.position + direction * speed * Time.fixedDeltaTime);
-    }
-
-
-    
+    }  
 }

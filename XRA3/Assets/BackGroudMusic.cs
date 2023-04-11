@@ -11,19 +11,11 @@ public class BackGroudMusic : MonoBehaviour
     void Start()
     {
 
-
-
-    
     }
     public void playNewMusic(AudioSource newAudiosource)
     {
-      
-
-     
         newSource = newAudiosource;
         SceneManager.LoadScene("PlayScene");
 
     }
-
-
 }

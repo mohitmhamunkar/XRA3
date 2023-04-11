@@ -16,36 +16,26 @@ public class ControllerColision : MonoBehaviour
     GameObject hitObject;
     public static bool endGame=false;
     public static int score=0;
-
     public Light pLight;
-
-
-
-
     public float delayTime = 0f;
-
-   
     private void Start()
     {
         score = 0;
         endGame = false;
     }
-
     void Update()
     {
         if (score >= 0)
         {
-
             score_text.text = score.ToString();
         }
-        else {
-            
+        else 
+        {     
             endLevelText.text = "Level Failed";
             endGame = true;
             score = 0;
         }
         endGameObject.SetActive(endGame);
-
     }
 
     public void LoadSceneWithDelay(string sceneName)
@@ -69,8 +59,6 @@ public class ControllerColision : MonoBehaviour
             render.material = other.gameObject.GetComponent<MeshRenderer>().material;
         }
         createdObject.SetActive(true);
-
-
         Rigidbody[] brokenPiecesRigidbodies = createdObject.GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody rigidbody in brokenPiecesRigidbodies)
         {
@@ -103,26 +91,15 @@ public class ControllerColision : MonoBehaviour
         else if (other.gameObject.tag == "Back") {
             InstantiateObjectAndDestroy(other);
             LoadSceneWithDelay("StartScene");
-
         }
         else if (other.gameObject.tag == "Play")
         {
             InstantiateObjectAndDestroy(other);
             LoadSceneWithDelay("PlayScene");
         }
-
-
-
-
-
-
-
-
-        else if (!endGame) {
-
+        else if (!endGame) 
+        {
             pLight.color = other.gameObject.GetComponent<Renderer>().material.color;
-
-
             if (gameObject.CompareTag(other.gameObject.tag + "Controller"))
             {
                 Vector3 velocity;
@@ -135,8 +112,6 @@ public class ControllerColision : MonoBehaviour
                 {
                     velocity = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.LTouch);
                 }
-
-
                 float magnitude = velocity.magnitude;
                 if (magnitude > 0.5 && magnitude <= 1)
                 {
@@ -149,7 +124,6 @@ public class ControllerColision : MonoBehaviour
                 else if (magnitude > 2)
                 {
                     hitObject = brokenPiecesLarge;
-
                 }
                 else
                 {
@@ -165,27 +139,21 @@ public class ControllerColision : MonoBehaviour
                     render.material = other.gameObject.GetComponent<MeshRenderer>().material;
                 }
                 createdObject.SetActive(true);
-
                 float force = velocity.magnitude * 1f;
-
                 Rigidbody[] brokenPiecesRigidbodies = createdObject.GetComponentsInChildren<Rigidbody>();
                 foreach (Rigidbody rigidbody in brokenPiecesRigidbodies)
                 {
                     rigidbody.AddForce(UnityEngine.Random.insideUnitSphere * 5f, ForceMode.Impulse);
                     //rigidbody.AddForce(velocity.normalized * force, ForceMode.Impulse);
                 }
-
                 Destroy(createdObject, 1f);
                 Destroy(other.gameObject);
-
-
             }
             else if (objects.Contains(other.gameObject.tag))
             {
                 other.gameObject.GetComponent<MoveForward>().enabled = false;
                 if (other.gameObject.tag == "Right")
                 {
-
                     Vector3 velocity = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.LTouch); // get the velocity of the controller
                     float force = velocity.magnitude * 2f; // calculate the force based on the velocity
                     other.gameObject.GetComponent<Rigidbody>().AddForce(velocity.normalized * force, ForceMode.Impulse);
@@ -202,14 +170,12 @@ public class ControllerColision : MonoBehaviour
                     else if (magnitude > 2)
                     {
                         score -= 75;
-
                     }
                     else
                     {
                         score -= 15;
                     }
                     Destroy(other.gameObject, 1f);
-
                 }
                 else
                 {
@@ -231,7 +197,6 @@ public class ControllerColision : MonoBehaviour
                     else if (magnitude > 2)
                     {
                         score -= 75;
-
                     }
                     else
                     {
@@ -247,11 +212,6 @@ public class ControllerColision : MonoBehaviour
             {
                 score -= 100;
             }
-
-
         }
-
-
-
     }
 }

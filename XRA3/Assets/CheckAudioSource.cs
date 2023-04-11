@@ -21,7 +21,6 @@ public class CheckAudioSource : MonoBehaviour
             endLevelText.text = "Level Finished";
             ControllerColision.endGame = true;
             endGameObject.SetActive(true);
-
         }
 
     }

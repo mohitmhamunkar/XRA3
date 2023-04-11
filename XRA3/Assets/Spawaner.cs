@@ -16,15 +16,12 @@ public class Spawaner : MonoBehaviour
         pLight.color = pObject.GetComponent<Renderer>().material.color;
 
         pObject.transform.localPosition = Vector3.zero;
-        if (pObject.gameObject.tag == "Door") {
+        if (pObject.gameObject.tag == "Door") 
+        {
             pObject.gameObject.transform.position = new Vector3(pObject.gameObject.transform.position.x, -0.69f, pObject.gameObject.transform.position.z);
             pObject.gameObject.transform.localScale = new Vector3(Random.Range(1, 10)*0.1f, Random.Range(8, 12) * 0.1f,1f);
-
-        }
-       
+        } 
     }
-
-
     // Update is called once per frame
     void Update()
     {
